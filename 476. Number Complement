@@ -1,0 +1,8 @@
+public class Solution {
+    public int findComplement(int num) {
+        int n = 0;
+		n = (int) ((Math.log(num))/(Math.log(2)));
+		num = (int) ((long)num^((long)Math.pow(2,n+1)-1));
+        return num;
+    }
+}
