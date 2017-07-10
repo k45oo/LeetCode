@@ -1,0 +1,17 @@
+public class Solution {
+    public int[][] matrixReshape(int[][] nums, int r, int c) {
+        int nr = nums.length,nc = nums[0].length,R=0,C=0;
+		if(r*c!=nr*nc)  return nums;
+        int[][] numsR = new int[r][c];           
+		for(int i=0;i<r;i++)
+			for(int j=0;j<c;j++){
+				numsR[i][j] = nums[R][C];
+				C++;
+				if(C==nc){
+					C=0;
+					R++;
+				}				 
+			}
+	    return numsR;     
+   }
+}
