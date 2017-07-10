@@ -1,0 +1,19 @@
+public class Solution {
+    public String reverseStr(String s, int k) {
+        StringBuffer sb = new StringBuffer(s);	
+        int i = 0;
+        while(i < sb.length()) {
+            int j = Math.min(i+k,sb.length());
+            swap(sb, i, j);
+            i += 2 * k;
+        }
+		return sb.toString();				
+	}
+	
+	public static StringBuffer swap(StringBuffer sb,int star,int end){
+		String r = sb.substring(star,end);
+		StringBuffer n = new StringBuffer(r);
+		sb.replace(star,end,n.reverse().toString());	
+		return sb;
+	}    
+}
