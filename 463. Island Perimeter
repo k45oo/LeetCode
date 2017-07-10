@@ -1,0 +1,23 @@
+public class Solution {
+    public int islandPerimeter(int[][] grid) {
+        if(grid==null) return 0;
+		int girth = 0;
+        int r=grid.length,c=grid[0].length;
+		int[] empty = new int[c];
+		for(int i=0;i<r-1;i++)
+			girth += line(grid[i],grid[i+1]);		
+		girth += line(grid[r-1],empty);			
+		return girth;
+	}	
+	
+	public static int line(int[] now,int[] next) {	
+		int count = 0;
+		for(int i=0;i<now.length;i++){
+			if(now[i]!=0)
+				if(i==now.length-1) count += (next[i]==1)?2:4;
+				else if(now[i+1]==1 && next[i]==1);
+				else count += (now[i+1]==1||next[i]==1)?2:4;			    
+		}
+		return count;
+	}    
+}
