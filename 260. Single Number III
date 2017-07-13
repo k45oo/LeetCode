@@ -1,0 +1,10 @@
+public class Solution {
+    public int[] singleNumber(int[] nums) {
+        if(nums.length==2) return nums;
+        HashSet<Integer> hs = new HashSet<Integer>();
+		for(int i:nums)
+		    if(hs.add(i));
+		    else hs.remove(i);
+		return Arrays.stream(hs.toArray()).mapToInt(o -> (int)o).toArray();
+    }
+}
