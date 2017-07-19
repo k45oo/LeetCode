@@ -1,0 +1,18 @@
+public class Solution {
+    public List<Integer> lexicalOrder(int n) {
+        List<Integer> l = new ArrayList<Integer>();
+        int index = 1;
+        for(int i=1;i<=n;i++){
+            l.add(index);
+            if(index*10<=n) index *= 10;
+            else if(index%10!=9 && index!=n) index++;
+            else{
+                while ((index / 10) % 10 == 9) {
+                    index /= 10;
+                }
+                index = index / 10 + 1;
+            }
+        }
+        return l;
+    }
+}
