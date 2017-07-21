@@ -1,0 +1,23 @@
+public class Solution {
+    public int[] intersect(int[] n1, int[] n2) {
+        if(n1.length==0 || n2.length==0) return new int[0];
+        Arrays.sort(n1);
+        Arrays.sort(n2);
+        List<Integer> l = new ArrayList<Integer>();
+        int x=0,y=0,n=0;
+        while(x<n1.length && y<n2.length){
+            if(n1[x]==n2[y]){
+                l.add(n1[x]);
+                x++; y++; n++;
+            }else if(n1[x]<n2[y]) x++;
+            else y++;
+        }
+        int[] n3 = new int[n];
+        int i = 0;
+        for(int num:l){
+            n3[i] = num;
+            i++;
+        }
+        return n3;
+    }
+}
