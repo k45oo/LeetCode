@@ -1,0 +1,17 @@
+public class Solution {
+    public int superPow(int a, int[] b) {  // 1337 = 7 * 191
+        a %= 1337;
+        if(a<=1) return a;
+        int p = 0;
+        for(int i:b) p = (p*10 + i) % 1140;
+        if(p==0) p=1140;
+        
+        int ret = 1;
+        while (p != 0) {
+            if ((p & 1) != 0) ret = ret * a % 1337;
+            a = a * a % 1337;
+            p /= 2;
+        }
+        return ret;
+    }
+}
