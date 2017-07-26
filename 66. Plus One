@@ -1,0 +1,15 @@
+public class Solution {
+    public int[] plusOne(int[] d) {
+        int[] a = new int[d.length+1];
+        a[0] = 1; d[d.length-1]++;
+        int x = 0;
+        for(int i=d.length-1;i>=0;i--){
+            int n = d[i]+x;
+		    d[i] = n%10;
+            if(n==10) x=1;
+            else x=0;
+        }
+        if(x==1) return a;
+        else return d;
+    }
+}
