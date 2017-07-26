@@ -1,0 +1,18 @@
+public class Solution {
+    public int countSubstrings(String s) {
+        char[] ch = s.toCharArray();
+        int n = s.length();
+        for(int i=2;i<=s.length();i++)
+            for(int j=0;j<=s.length()-i;j++){
+                int l = 0;
+                int x = j,y = j+i-1;
+                while(x<y){
+                    if(ch[x]!=ch[y]){
+                        l=1; break;
+                    } x++; y--;
+                }
+                if(l==0) n++;
+            }
+        return n;
+    }
+}
