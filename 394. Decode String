@@ -1,0 +1,26 @@
+public class Solution {
+    public String decodeString(String s) {
+        StringBuilder str = new StringBuilder();
+        Stack<Character> k = new Stack<Character>();
+        for(char c:s.toCharArray())
+            if(c!=']') k.push(c);
+            else {
+                StringBuilder sb = new StringBuilder();
+                while(k.peek()!='[') sb.insert(0, k.pop());
+                k.pop();
+                int x = 0,y = 0;
+                while(!k.isEmpty() && (int)k.peek()>=48 && (int)k.peek()<=57){
+                    x += Math.pow(10,y)*(k.pop()-48);
+                    y++;
+                }
+                    
+                String s1 = new String(sb);
+                for(int i=1;i<x;i++) sb.append(s1);
+                for(char ch:sb.toString().toCharArray()) k.push(ch);
+            }
+        
+        while(!k.isEmpty()) str.insert(0, k.pop());
+            
+        return str.toString();
+    }
+}
