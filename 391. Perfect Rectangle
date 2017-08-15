@@ -1,0 +1,33 @@
+public class Solution {
+    public boolean isRectangleCover(int[][] rectangles) {
+        int sum = 0;
+        Set<String> set = new HashSet<String>();
+        int a = Integer.MAX_VALUE,b = Integer.MAX_VALUE,c = -1,d = -1;
+        for(int[] rect : rectangles){
+            sum += (rect[2]-rect[0])*(rect[3]-rect[1]);
+            
+            a = Math.min(a,rect[0]);
+            b = Math.min(b,rect[1]);
+            c = Math.max(c,rect[2]);
+            d = Math.max(d,rect[3]);
+            
+            String s1 = rect[0] + " " + rect[1];
+            String s2 = rect[0] + " " + rect[3];
+            String s3 = rect[2] + " " + rect[3];
+            String s4 = rect[2] + " " + rect[1];
+            
+            if (!set.add(s1)) set.remove(s1);
+            if (!set.add(s2)) set.remove(s2);
+            if (!set.add(s3)) set.remove(s3);
+            if (!set.add(s4)) set.remove(s4);
+        }
+        if (!set.contains(a + " " + b) 
+         || !set.contains(a + " " + d) 
+         || !set.contains(c + " " + b)
+         || !set.contains(c + " " + d) 
+         || set.size() != 4) return false;
+        
+        return (c-a)*(d-b)==sum;
+
+    }
+}
